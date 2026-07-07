@@ -7,61 +7,67 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 4f;
 
     private Rigidbody2D rb;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
     private PlayerControls playerControls;
     private Vector2 movementInput;
 
     private void Awake()
     {
-        // Obtenemos el Rigidbody2D del Player.
-        // Lo usaremos para mover al personaje respetando la física 2D de Unity.
+        // Obtenemos los componentes necesarios del Player.
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Creamos una instancia de la clase PlayerControls,
-        // que fue generada automáticamente desde el archivo PlayerControls.inputactions.
+        // Creamos la clase generada desde PlayerControls.inputactions.
         playerControls = new PlayerControls();
     }
 
     private void OnEnable()
     {
-        // Activamos el mapa de controles del jugador.
+        // Activamos el mapa de controles Player.
         playerControls.Player.Enable();
 
-        // Nos suscribimos al evento Move.
-        // Cada vez que el jugador presione una tecla de movimiento,
-        // Unity ejecutará el método OnMove.
+        // Escuchamos el evento Move.
         playerControls.Player.Move.performed += OnMove;
-
-        // Cuando el jugador suelte la tecla, también ejecutamos OnMove
-        // para actualizar el movimiento a cero.
         playerControls.Player.Move.canceled += OnMove;
     }
 
     private void OnDisable()
     {
-        // Quitamos la suscripción a los eventos para evitar errores
-        // si el objeto se desactiva o se destruye.
+        // Dejamos de escuchar el evento Move para evitar errores.
         playerControls.Player.Move.performed -= OnMove;
         playerControls.Player.Move.canceled -= OnMove;
 
-        // Desactivamos el mapa de controles del jugador.
+        // Desactivamos los controles.
         playerControls.Player.Disable();
     }
 
     private void OnMove(InputAction.CallbackContext context)
     {
-        // Leemos el valor Vector2 enviado por la acción Move.
-        // Ejemplo:
-        // Flecha arriba = (0, 1)
-        // Flecha abajo = (0, -1)
-        // Flecha derecha = (1, 0)
-        // Flecha izquierda = (-1, 0)
+        // Leemos la dirección de movimiento.
         movementInput = context.ReadValue<Vector2>();
+
+        // Cambiamos entre Idle y Walk.
+        bool isMoving = movementInput != Vector2.zero;
+        animator.SetBool("IsMoving", isMoving);
+
+        // Giramos el sprite según la dirección horizontal.
+        // Si se mueve a la izquierda, mira a la izquierda.
+        // Si se mueve a la derecha, se voltea visualmente.
+        if (movementInput.x > 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (movementInput.x < 0)
+        {
+            spriteRenderer.flipX = false;
+        }
     }
 
     private void FixedUpdate()
     {
-        // Movemos al jugador usando Rigidbody2D.
-        // FixedUpdate se usa porque el movimiento depende de física.
+        // Movemos al jugador usando física 2D.
         rb.MovePosition(rb.position + movementInput * moveSpeed * Time.fixedDeltaTime);
     }
 }
