@@ -10,10 +10,10 @@ public class CollectableItem : MonoBehaviour
         // Revisamos si el objeto que entró al trigger es el Player.
         if (collision.CompareTag("Player"))
         {
-            // Mostramos en consola qué objeto fue recogido.
-            Debug.Log("Objeto recogido: " + itemName);
+            // Avisamos al GameManager que este objeto fue recogido.
+            GameManager.Instance.AddCollectedItem(itemName);
 
-            // Destruimos este objeto de la escena.
+            // Destruimos el objeto recogido de la escena.
             Destroy(gameObject);
         }
     }
