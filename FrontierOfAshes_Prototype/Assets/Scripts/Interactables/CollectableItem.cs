@@ -13,6 +13,9 @@ public class CollectableItem : MonoBehaviour
             // Avisamos al GameManager que este objeto fue recogido.
             GameManager.Instance.AddCollectedItem(itemName);
 
+            // Reproducimos el sonido de recolección.
+            AudioManager.Instance.PlayPickupSound();
+
             // Destruimos el objeto recogido de la escena.
             Destroy(gameObject);
         }
