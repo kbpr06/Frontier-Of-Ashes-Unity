@@ -3,44 +3,28 @@ using UnityEngine;
 
 public class HUDController : MonoBehaviour
 {
-    [Header("UI References")]
+    [Header("Referencias de interfaz")]
     [SerializeField] private TMP_Text itemsText;
-    [SerializeField] private TMP_Text healthText;
+    [SerializeField] private HealthUI healthUI;
 
-    private void Awake()
-    {
-        if (healthText == null && itemsText != null)
-        {
-            GameObject healthObject = new GameObject("Health_Text");
-            healthObject.transform.SetParent(itemsText.transform.parent, false);
-
-            RectTransform rectTransform = healthObject.AddComponent<RectTransform>();
-            rectTransform.anchorMin = itemsText.rectTransform.anchorMin;
-            rectTransform.anchorMax = itemsText.rectTransform.anchorMax;
-            rectTransform.pivot = itemsText.rectTransform.pivot;
-            rectTransform.anchoredPosition = itemsText.rectTransform.anchoredPosition + new Vector2(0f, -40f);
-            rectTransform.sizeDelta = itemsText.rectTransform.sizeDelta;
-
-            healthText = healthObject.AddComponent<TextMeshProUGUI>();
-            healthText.font = itemsText.font;
-            healthText.fontSize = itemsText.fontSize;
-            healthText.color = itemsText.color;
-            healthText.alignment = itemsText.alignment;
-            healthText.text = "Vida: -/-";
-        }
-    }
-
+    
+    /// Actualiza temporalmente el contador general de objetos.
+    /// Más adelante será reemplazado por el inventario.
     public void UpdateCollectedItems(int amount)
     {
-        // Actualiza el contador de objetos en pantalla.
+        if (itemsText == null)
+            return;
+
         itemsText.text = "Objetos: " + amount;
     }
 
+  
+    /// Actualiza visualmente la vida del jugador.
     public void UpdateHealth(int currentHealth, int maxHealth)
     {
-        if (healthText == null)
+        if (healthUI == null)
             return;
 
-        healthText.text = "Vida: " + currentHealth + "/" + maxHealth;
+        healthUI.UpdateHealth(currentHealth, maxHealth);
     }
 }
