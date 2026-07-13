@@ -40,6 +40,14 @@ public class GameManager : MonoBehaviour
         hudController.UpdateCollectedItems(collectedItems);
     }
 
+    public void UpdatePlayerHealth(int currentHealth, int maxHealth)
+    {
+        if (hudController != null)
+        {
+            hudController.UpdateHealth(currentHealth, maxHealth);
+        }
+    }
+
     public int GetCollectedItems()
     {
         return collectedItems;
