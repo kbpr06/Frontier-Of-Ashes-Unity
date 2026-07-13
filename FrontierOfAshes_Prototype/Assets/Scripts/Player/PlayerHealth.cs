@@ -1,131 +1,213 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [Header("Vida del jugador")]
-    [SerializeField] private int maxHealth = 3;
+    [Header("Configuración de vida")]
 
-    [Header("Reaparicion")]
-    [SerializeField] private Transform spawnPoint;
-    [SerializeField] private float respawnDelay = 2f;
+    // Cantidad máxima de vida que puede tener el jugador.
+    [SerializeField] private int maxHealth = 5;
 
+    [Header("Configuración de reaparición")]
+
+    // Punto donde reaparecerá el jugador antes de activar un checkpoint.
+    [SerializeField] private Transform initialSpawnPoint;
+
+    // Vida actual del jugador.
     private int currentHealth;
+
+    // Último punto de reaparición activado.
+    private Transform currentSpawnPoint;
+
+    // Evita ejecutar la muerte más de una vez.
     private bool isDead;
 
-    private SpriteRenderer spriteRenderer;
-    private Collider2D playerCollider;
-    private Rigidbody2D rb;
+    // Permite consultar la vida desde otros scripts,
+    // pero evita que puedan modificarla directamente.
+    public int CurrentHealth => currentHealth;
+    public int MaxHealth => maxHealth;
 
     private void Start()
     {
+        // El jugador comienza con toda su vida.
         currentHealth = maxHealth;
 
-        if (spawnPoint == null)
+        // Al iniciar, utilizamos el punto inicial de la aldea.
+        if (initialSpawnPoint != null)
         {
-            spawnPoint = transform;
+            currentSpawnPoint = initialSpawnPoint;
+        }
+        else
+        {
+            // Este mensaje aparecerá si olvidamos asignar
+            // VillageSpawnPoint en el Inspector.
+            Debug.LogWarning(
+                "No se asignó Initial Spawn Point en PlayerHealth."
+            );
         }
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        playerCollider = GetComponent<Collider2D>();
-        rb = GetComponent<Rigidbody2D>();
+        // Mostramos la vida inicial en el HUD.
+        UpdateHealthUI();
 
-        NotifyHud();
-        Debug.Log("Vida inicial: " + currentHealth);
+        Debug.Log(
+            "Vida inicial del jugador: " +
+            currentHealth + "/" + maxHealth
+        );
     }
 
-    public void TakeDamage(int damage)
+    
+    /// Reduce la vida del jugador según el daño recibido.
+    
+    public void TakeDamage(int damageAmount)
     {
+        // No recibimos daño si el jugador ya está muerto.
         if (isDead)
-            return;
-
-        currentHealth -= damage;
-
-        if (currentHealth < 0)
-            currentHealth = 0;
-
-        NotifyHud();
-        Debug.Log("Vida restante: " + currentHealth);
-
-        if (currentHealth == 0)
         {
-            StartCoroutine(DieAndRespawn());
+            return;
+        }
+
+        // Evitamos aceptar valores iguales o inferiores a cero.
+        if (damageAmount <= 0)
+        {
+            return;
+        }
+
+        // Restamos vida y evitamos que el valor quede bajo cero.
+        currentHealth = Mathf.Clamp(
+            currentHealth - damageAmount,
+            0,
+            maxHealth
+        );
+
+        Debug.Log(
+            "El jugador recibió " + damageAmount +
+            " de daño. Vida actual: " +
+            currentHealth + "/" + maxHealth
+        );
+
+        // Actualizamos los corazones.
+        UpdateHealthUI();
+
+        // Si la vida llega a cero, se ejecuta la muerte.
+        if (currentHealth <= 0)
+        {
+            Die();
         }
     }
 
-    private IEnumerator DieAndRespawn()
+    
+    /// Restaura completamente la vida del jugador.
+    
+    public void RestoreFullHealth()
     {
+        currentHealth = maxHealth;
+
+        // Actualizamos los corazones después de recuperar la vida.
+        UpdateHealthUI();
+
+        Debug.Log(
+            "La vida del jugador fue restaurada: " +
+            currentHealth + "/" + maxHealth
+        );
+    }
+
+    /// Guarda un nuevo checkpoint como punto de reaparición.
+    /// Este método es llamado por el script Checkpoint.
+   
+    public void SetSpawnPoint(Transform newSpawnPoint)
+    {
+        // Evitamos guardar una referencia vacía.
+        if (newSpawnPoint == null)
+        {
+            return;
+        }
+
+        currentSpawnPoint = newSpawnPoint;
+
+        Debug.Log(
+            "Nuevo punto de reaparición establecido: " +
+            newSpawnPoint.gameObject.name
+        );
+    }
+
+
+    /// Se ejecuta cuando la vida del jugador llega a cero.
+
+    private void Die()
+    {
+        // Evitamos ejecutar la muerte más de una vez.
+        if (isDead)
+        {
+            return;
+        }
+
         isDead = true;
 
         Debug.Log("El jugador ha muerto.");
 
-        if (spriteRenderer != null)
-            spriteRenderer.enabled = false;
+        // Iniciamos una secuencia de muerte con una pequeña espera.
+        StartCoroutine(DeathSequence());
+    }
 
-        if (playerCollider != null)
-            playerCollider.enabled = false;
+    
+    /// Controla la espera entre la muerte y la reaparición.
 
-        if (rb != null)
+    private IEnumerator DeathSequence()
+    {
+        // Esperamos 1,5 segundos antes de reaparecer.
+        yield return new WaitForSeconds(1.5f);
+
+        Respawn();
+    }
+
+    /// Devuelve al jugador al último checkpoint activado
+    /// y restaura completamente su vida.
+    private void Respawn()
+    {
+        if (currentSpawnPoint != null)
         {
-            rb.linearVelocity = Vector2.zero;
-            rb.simulated = false;
+            // Trasladamos al jugador a un punto seguro.
+            transform.position = currentSpawnPoint.position;
+
+            // Sincronizamos inmediatamente la nueva posición
+            // con el sistema de físicas de Unity.
+            Physics2D.SyncTransforms();
+
+            Debug.Log(
+                "El jugador reapareció en: " +
+                currentSpawnPoint.gameObject.name
+            );
+        }
+        else
+        {
+            Debug.LogWarning(
+                "No existe un punto de reaparición asignado."
+            );
         }
 
-        yield return new WaitForSeconds(respawnDelay);
+        // Recuperamos toda la vida después de mover al jugador.
+        RestoreFullHealth();
 
-        currentHealth = maxHealth;
-        NotifyHud();
-
-        if (spawnPoint != null)
-            transform.position = spawnPoint.position;
-
-        if (spriteRenderer != null)
-            spriteRenderer.enabled = true;
-
-        if (playerCollider != null)
-            playerCollider.enabled = true;
-
-        if (rb != null)
-            rb.simulated = true;
-
+        // El jugador vuelve a estar activo y puede recibir daño.
         isDead = false;
-
-        Debug.Log("Jugador reaparecio.");
     }
 
-    public void Heal(int amount)
+
+    /// Envía la vida actual al GameManager para actualizar el HUD.
+    private void UpdateHealthUI()
     {
-        if (isDead)
-            return;
-
-        currentHealth += amount;
-
-        if (currentHealth > maxHealth)
-            currentHealth = maxHealth;
-
-        NotifyHud();
-    }
-
-    public int GetCurrentHealth()
-    {
-        return currentHealth;
-    }
-
-    public int GetMaxHealth()
-    {
-        return maxHealth;
-    }
-
-    public void SetSpawnPoint(Transform newSpawnPoint)
-    {
-        spawnPoint = newSpawnPoint;
-    }
-
-    private void NotifyHud()
-    {
-        if (GameManager.Instance != null)
+        if (GameManager.Instance == null)
         {
-            GameManager.Instance.UpdatePlayerHealth(currentHealth, maxHealth);
+            Debug.LogWarning(
+                "No se encontró una instancia de GameManager."
+            );
+
+            return;
         }
+
+        GameManager.Instance.UpdatePlayerHealth(
+            currentHealth,
+            maxHealth
+        );
     }
 }
