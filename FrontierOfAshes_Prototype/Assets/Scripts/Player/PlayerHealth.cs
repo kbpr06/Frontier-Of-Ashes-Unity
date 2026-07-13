@@ -21,10 +21,16 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
 
+        if (spawnPoint == null)
+        {
+            spawnPoint = transform;
+        }
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
 
+        NotifyHud();
         Debug.Log("Vida inicial: " + currentHealth);
     }
 
@@ -38,6 +44,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth < 0)
             currentHealth = 0;
 
+        NotifyHud();
         Debug.Log("Vida restante: " + currentHealth);
 
         if (currentHealth == 0)
@@ -67,6 +74,7 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(respawnDelay);
 
         currentHealth = maxHealth;
+        NotifyHud();
 
         if (spawnPoint != null)
             transform.position = spawnPoint.position;
@@ -94,10 +102,30 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
+
+        NotifyHud();
     }
 
     public int GetCurrentHealth()
     {
         return currentHealth;
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public void SetSpawnPoint(Transform newSpawnPoint)
+    {
+        spawnPoint = newSpawnPoint;
+    }
+
+    private void NotifyHud()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.UpdatePlayerHealth(currentHealth, maxHealth);
+        }
     }
 }

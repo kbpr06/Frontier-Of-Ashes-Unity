@@ -17168,12 +17168,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1670652698}
-  - component: {fileID: 1670652697}
-  - component: {fileID: 1670652696}
-  - component: {fileID: 1670652695}
-  - component: {fileID: 1670652694}
-  - component: {fileID: 1670652699}
+    - component: {fileID: 1670652698}
+    - component: {fileID: 1670652697}
+    - component: {fileID: 1670652696}
+    - component: {fileID: 1670652695}
+    - component: {fileID: 1670652694}
+    - component: {fileID: 1670652699}
+    - component: {fileID: 1670652700}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -17355,6 +17356,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 4
+--- !u!114 &1670652700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670652693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4b99f9a6f75044a8596ea2ea7d3594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 3
+  spawnPoint: {fileID: 0}
+  respawnDelay: 2
 --- !u!1 &1721753431 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5458055933455332327, guid: 9241521f1d8e04b4788316f133ec2157, type: 3}
