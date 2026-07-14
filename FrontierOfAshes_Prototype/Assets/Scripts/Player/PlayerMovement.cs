@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Configuración de movimiento")]
+
+    // Velocidad de desplazamiento del jugador.
     [SerializeField] private float moveSpeed = 4f;
 
     // Componentes utilizados por el jugador.
@@ -14,15 +16,23 @@ public class PlayerMovement : MonoBehaviour
     // Clase generada por el nuevo Input System.
     private PlayerControls playerControls;
 
-    // Dirección recibida desde las teclas.
+    // Dirección actual recibida desde las teclas.
     private Vector2 movementInput;
+
+    // Última dirección válida hacia la que miró el jugador.
+    // Comienza mirando hacia abajo.
+    private Vector2 lastMoveDirection = Vector2.down;
 
     // Indica si el jugador tiene permitido moverse.
     private bool canMove = true;
 
+    // Permite que otros scripts consulten la última dirección
+    // sin modificarla directamente.
+    public Vector2 LastMoveDirection => lastMoveDirection;
+
     private void Awake()
     {
-        // Obtenemos los componentes del mismo GameObject.
+        // Obtenemos los componentes necesarios del Player.
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -33,10 +43,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        // Activamos el mapa de controles del jugador.
+        // Activamos el mapa de controles Player.
         playerControls.Player.Enable();
 
-        // Escuchamos cuando se presiona o se suelta una dirección.
+        // Escuchamos los eventos de movimiento.
         playerControls.Player.Move.performed += OnMove;
         playerControls.Player.Move.canceled += OnMove;
     }
@@ -47,20 +57,29 @@ public class PlayerMovement : MonoBehaviour
         playerControls.Player.Move.performed -= OnMove;
         playerControls.Player.Move.canceled -= OnMove;
 
+        // Desactivamos los controles.
         playerControls.Player.Disable();
     }
 
+    /// Recibe la dirección enviada por el Input System.
     private void OnMove(InputAction.CallbackContext context)
     {
-        // Si el movimiento está bloqueado, ignoramos cualquier entrada.
+        // Si el movimiento está bloqueado, eliminamos cualquier entrada.
         if (!canMove)
         {
             movementInput = Vector2.zero;
             return;
         }
 
-        // Leemos la dirección enviada por el Input System.
+        // Leemos la dirección actual.
         movementInput = context.ReadValue<Vector2>();
+
+        // Solo actualizamos la última dirección cuando existe movimiento.
+        // Así el jugador conserva la dirección al quedarse quieto.
+        if (movementInput != Vector2.zero)
+        {
+            lastMoveDirection = GetCardinalDirection(movementInput);
+        }
 
         UpdateAnimation();
         UpdateDirection();
@@ -68,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Si el jugador no puede moverse, no actualizamos su posición.
+        // Si el movimiento está bloqueado, no desplazamos al jugador.
         if (!canMove)
         {
             return;
@@ -80,16 +99,35 @@ public class PlayerMovement : MonoBehaviour
             movementInput * moveSpeed * Time.fixedDeltaTime
         );
     }
+
+    /// Convierte la dirección recibida en una de las cuatro
+    /// direcciones principales: arriba, abajo, izquierda o derecha.
+    private Vector2 GetCardinalDirection(Vector2 direction)
+    {
+        // Si el movimiento horizontal es mayor,
+        // elegimos izquierda o derecha.
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        {
+            return direction.x > 0
+                ? Vector2.right
+                : Vector2.left;
+        }
+
+        // En caso contrario, elegimos arriba o abajo.
+        return direction.y > 0
+            ? Vector2.up
+            : Vector2.down;
+    }
+
     /// Cambia entre la animación de reposo y movimiento.
-   
     private void UpdateAnimation()
     {
         bool isMoving = movementInput != Vector2.zero;
+
         animator.SetBool("IsMoving", isMoving);
     }
 
-    /// Cambia la dirección visual del personaje.
-
+    /// Cambia la orientación horizontal del sprite.
     private void UpdateDirection()
     {
         if (movementInput.x > 0)
@@ -102,22 +140,21 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
     /// Permite bloquear o habilitar el movimiento del jugador.
-
     public void SetMovementEnabled(bool enabled)
     {
         canMove = enabled;
 
-        // Al bloquear el movimiento eliminamos la última dirección guardada.
+        // Al bloquear el movimiento eliminamos
+        // la última entrada activa.
         if (!canMove)
         {
             movementInput = Vector2.zero;
 
-            // Detenemos cualquier desplazamiento pendiente del Rigidbody.
+            // Detenemos cualquier velocidad pendiente.
             rb.linearVelocity = Vector2.zero;
 
-            // Dejamos al personaje en la animación de reposo.
+            // Dejamos al jugador en estado de reposo.
             animator.SetBool("IsMoving", false);
         }
     }

@@ -1,27 +1,38 @@
+using System.Collections;
 using UnityEngine;
 
 public class CreatureHealth : MonoBehaviour
 {
     [Header("Configuración de vida")]
 
-    // Cantidad máxima de vida de la criatura.
+    // Vida máxima de la criatura.
     [SerializeField] private int maxHealth = 2;
 
-    // Vida actual de la criatura.
+    [Header("Configuración de muerte")]
+
+    // Tiempo antes de eliminar la criatura.
+    // Debe coincidir aproximadamente con la animación Dead.
+    [SerializeField] private float deathDelay = 1f;
+
+    // Vida actual.
     private int currentHealth;
 
-    // Evita ejecutar la muerte más de una vez.
+    // Evita daño y muerte repetida.
     private bool isDead;
 
-    // Permite consultar la vida desde otros scripts
-    // sin modificarla directamente.
+    // Referencias opcionales.
+    private Animator animator;
+    private EnemyAI enemyAI;
+
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
 
     private void Awake()
     {
-        // Al crearse la criatura, comienza con toda su vida.
         currentHealth = maxHealth;
+
+        animator = GetComponent<Animator>();
+        enemyAI = GetComponent<EnemyAI>();
 
         Debug.Log(
             gameObject.name +
@@ -31,22 +42,14 @@ public class CreatureHealth : MonoBehaviour
         );
     }
 
-    /// Recibe una cantidad determinada de daño.
+    /// Reduce la vida de la criatura.
     public void TakeDamage(int damageAmount)
     {
-        // Una criatura muerta no puede recibir más daño.
-        if (isDead)
+        if (isDead || damageAmount <= 0)
         {
             return;
         }
 
-        // Ignoramos cantidades de daño inválidas.
-        if (damageAmount <= 0)
-        {
-            return;
-        }
-
-        // Restamos la vida y evitamos que quede bajo cero.
         currentHealth = Mathf.Clamp(
             currentHealth - damageAmount,
             0,
@@ -55,22 +58,30 @@ public class CreatureHealth : MonoBehaviour
 
         Debug.Log(
             gameObject.name +
-            " recibió " + damageAmount +
+            " recibió " +
+            damageAmount +
             " de daño. Vida actual: " +
             currentHealth + "/" + maxHealth
         );
 
-        // Si la vida llega a cero, la criatura muere.
-        if (currentHealth <= 0)
+        // Si todavía tiene vida,
+        // reproducimos la reacción de daño.
+        if (currentHealth > 0)
         {
-            Die();
+            if (animator != null)
+            {
+                animator.SetTrigger("Hurt");
+            }
+
+            return;
         }
+
+        Die();
     }
 
-    /// Ejecuta la muerte de la criatura.
+    /// Inicia la secuencia de muerte.
     private void Die()
     {
-        // Evitamos ejecutar este proceso más de una vez.
         if (isDead)
         {
             return;
@@ -83,8 +94,36 @@ public class CreatureHealth : MonoBehaviour
             " ha muerto."
         );
 
-        // Por ahora eliminamos la criatura inmediatamente.
-        // Más adelante aquí agregaremos animación, sonido y loot.
+        // Si es un enemigo con IA,
+        // detenemos completamente su comportamiento.
+        if (enemyAI != null)
+        {
+            enemyAI.SetDead();
+        }
+
+        // Reproducimos la animación de muerte.
+        if (animator != null)
+        {
+            animator.SetTrigger("Dead");
+        }
+
+        StartCoroutine(DeathRoutine());
+    }
+
+    /// Espera la animación, genera el loot y elimina la criatura.
+    private IEnumerator DeathRoutine()
+    {
+        yield return new WaitForSeconds(deathDelay);
+
+        // Generamos el loot si existe este componente.
+        CreatureLoot creatureLoot =
+            GetComponent<CreatureLoot>();
+
+        if (creatureLoot != null)
+        {
+            creatureLoot.DropLoot();
+        }
+
         Destroy(gameObject);
     }
 }
