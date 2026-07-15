@@ -4,7 +4,7 @@ public class CollectableItem : MonoBehaviour
 {
     [Header("Configuración del objeto")]
 
-    // Información del objeto que será guardado.
+    // Información del objeto que será guardado en el inventario.
     [SerializeField] private ItemData itemData;
 
     // Cantidad entregada al recogerlo.
@@ -37,7 +37,13 @@ public class CollectableItem : MonoBehaviour
             );
         }
 
-        // Eliminamos el pickup de la escena.
+        // Reproducimos el efecto de sonido de recolección.
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayPickupSound();
+        }
+
+        // Eliminamos el objeto después de recogerlo.
         Destroy(gameObject);
     }
 }
