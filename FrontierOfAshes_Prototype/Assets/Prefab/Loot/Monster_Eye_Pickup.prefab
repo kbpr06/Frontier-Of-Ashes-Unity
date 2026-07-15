@@ -106,7 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ceb96ace21330d4695c057a1e78814b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectableItem
-  itemName: Monster Eye
+  itemData: {fileID: 11400000, guid: 3d0518f46042ee24b9cb28ce86a135bc, type: 2}
+  amount: 1
 --- !u!70 &8391477266222918288
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -137,7 +138,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

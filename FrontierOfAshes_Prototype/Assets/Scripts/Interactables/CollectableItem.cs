@@ -2,22 +2,42 @@ using UnityEngine;
 
 public class CollectableItem : MonoBehaviour
 {
-    [Header("Item Settings")]
-    [SerializeField] private string itemName = "Knife";
+    [Header("Configuración del objeto")]
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    // Información del objeto que será guardado.
+    [SerializeField] private ItemData itemData;
+
+    // Cantidad entregada al recogerlo.
+    [SerializeField] private int amount = 1;
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        // Revisamos si el objeto que entró al trigger es el Player.
-        if (collision.CompareTag("Player"))
+        // Solo el Player puede recoger el objeto.
+        if (!other.CompareTag("Player"))
         {
-            // Avisamos al GameManager que este objeto fue recogido.
-            GameManager.Instance.AddCollectedItem(itemName);
-
-            // Reproducimos el sonido de recolección.
-            AudioManager.Instance.PlayPickupSound();
-
-            // Destruimos el objeto recogido de la escena.
-            Destroy(gameObject);
+            return;
         }
+
+        // Agregamos el objeto al inventario.
+        if (
+            InventoryManager.Instance != null &&
+            itemData != null
+        )
+        {
+            InventoryManager.Instance.AddItem(
+                itemData,
+                amount
+            );
+
+            Debug.Log(
+                "Objeto recogido: " +
+                itemData.ItemName +
+                " x" +
+                amount
+            );
+        }
+
+        // Eliminamos el pickup de la escena.
+        Destroy(gameObject);
     }
 }

@@ -106,7 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ceb96ace21330d4695c057a1e78814b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectableItem
-  itemName: Golden
+  itemData: {fileID: 11400000, guid: ae102f8fa523f5a44afda1ac1526826c, type: 2}
+  amount: 1
 --- !u!70 &1904575109365415804
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

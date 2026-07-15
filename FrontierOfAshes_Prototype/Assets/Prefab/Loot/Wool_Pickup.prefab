@@ -106,7 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ceb96ace21330d4695c057a1e78814b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectableItem
-  itemName: Wool
+  itemData: {fileID: 11400000, guid: 4c515feae2132ee419b407c527a3e6a1, type: 2}
+  amount: 1
 --- !u!70 &5599270936628691374
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

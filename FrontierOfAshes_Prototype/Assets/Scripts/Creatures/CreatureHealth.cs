@@ -10,29 +10,42 @@ public class CreatureHealth : MonoBehaviour
 
     [Header("Configuración de muerte")]
 
-    // Tiempo antes de eliminar la criatura.
-    // Debe coincidir aproximadamente con la animación Dead.
-    [SerializeField] private float deathDelay = 1f;
+    // Tiempo que esperamos antes de eliminar la criatura.
+    [SerializeField] private float deathDelay = 1.5f;
 
     // Vida actual.
     private int currentHealth;
 
-    // Evita daño y muerte repetida.
+    // Evita recibir daño después de morir.
     private bool isDead;
 
     // Referencias opcionales.
     private Animator animator;
     private EnemyAI enemyAI;
 
+    // Indican si el Animator posee estos parámetros.
+    private bool hasHurtParameter;
+    private bool hasDeadParameter;
+
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
 
     private void Awake()
     {
+        // La criatura comienza con toda su vida.
         currentHealth = maxHealth;
 
+        // Buscamos componentes opcionales.
         animator = GetComponent<Animator>();
         enemyAI = GetComponent<EnemyAI>();
+
+        // Comprobamos qué parámetros existen realmente
+        // en el Animator Controller de esta criatura.
+        if (animator != null)
+        {
+            hasHurtParameter = HasAnimatorParameter("Hurt");
+            hasDeadParameter = HasAnimatorParameter("Dead");
+        }
 
         Debug.Log(
             gameObject.name +
@@ -45,6 +58,7 @@ public class CreatureHealth : MonoBehaviour
     /// Reduce la vida de la criatura.
     public void TakeDamage(int damageAmount)
     {
+        // Una criatura muerta no puede seguir recibiendo daño.
         if (isDead || damageAmount <= 0)
         {
             return;
@@ -64,11 +78,11 @@ public class CreatureHealth : MonoBehaviour
             currentHealth + "/" + maxHealth
         );
 
-        // Si todavía tiene vida,
-        // reproducimos la reacción de daño.
+        // Si todavía tiene vida, reproducimos Hurt
+        // solamente si este Animator posee ese parámetro.
         if (currentHealth > 0)
         {
-            if (animator != null)
+            if (animator != null && hasHurtParameter)
             {
                 animator.SetTrigger("Hurt");
             }
@@ -79,7 +93,7 @@ public class CreatureHealth : MonoBehaviour
         Die();
     }
 
-    /// Inicia la secuencia de muerte.
+    /// Inicia la muerte de la criatura.
     private void Die()
     {
         if (isDead)
@@ -94,15 +108,16 @@ public class CreatureHealth : MonoBehaviour
             " ha muerto."
         );
 
-        // Si es un enemigo con IA,
+        // Si la criatura posee IA enemiga,
         // detenemos completamente su comportamiento.
         if (enemyAI != null)
         {
             enemyAI.SetDead();
         }
 
-        // Reproducimos la animación de muerte.
-        if (animator != null)
+        // Reproducimos Dead solamente si
+        // el Animator Controller posee ese parámetro.
+        if (animator != null && hasDeadParameter)
         {
             animator.SetTrigger("Dead");
         }
@@ -115,7 +130,6 @@ public class CreatureHealth : MonoBehaviour
     {
         yield return new WaitForSeconds(deathDelay);
 
-        // Generamos el loot si existe este componente.
         CreatureLoot creatureLoot =
             GetComponent<CreatureLoot>();
 
@@ -125,5 +139,20 @@ public class CreatureHealth : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    /// Comprueba si el Animator Controller
+    /// contiene un parámetro con el nombre indicado.
+    private bool HasAnimatorParameter(string parameterName)
+    {
+        foreach (AnimatorControllerParameter parameter in animator.parameters)
+        {
+            if (parameter.name == parameterName)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

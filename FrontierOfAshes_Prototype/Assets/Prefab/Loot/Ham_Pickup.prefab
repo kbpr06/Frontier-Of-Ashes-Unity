@@ -106,7 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ceb96ace21330d4695c057a1e78814b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectableItem
-  itemName: Hum
+  itemData: {fileID: 11400000, guid: 942df78dc3c6cd045938a1fb15d8e328, type: 2}
+  amount: 1
 --- !u!70 &7804862166587205472
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

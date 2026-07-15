@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,12 +108,892 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 228
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1535e0cd907c67c4185dc3de35a450c4
+      internalID: 919705234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 228
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b041b813d3e3764e86662d9539b06e0
+      internalID: 191881088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_2
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 228
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84b2434c602d1df499d26d2985924f43
+      internalID: 935774171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_3
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 228
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ea0f65666ab50f4aa07bbc50af20f10
+      internalID: 1446759404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 228
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3f702796cb8af14a863869b628b89a8
+      internalID: -1781040891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_5
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 228
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58b7f7f2bd9a3ba40ac3db73269ecd59
+      internalID: 41844648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_6
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 196
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6a05e46b2168b54b89fe5a418e48d66
+      internalID: 1093564018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_7
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 196
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d701c80793dac4428c6b54992193fce
+      internalID: -1022944033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_8
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 196
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ae25f64ecec2d647ad361c1de037c74
+      internalID: 100023964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_9
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 196
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5c74f89dfca804459fc6fa65985dbe0
+      internalID: -376952266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_10
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 196
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 917296fd7ec992e47baecb14ce2e3613
+      internalID: 1566404037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_11
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 196
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f74d43e1c749b6c448aa71f7af1e2139
+      internalID: -1627679519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 164
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cc7ff42819a58a4cb7146b0caeedcba
+      internalID: -1342990861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_13
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 164
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e734a2b105d55914cab52ce2941d7bb4
+      internalID: 664800675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_14
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 164
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fecd79745c3165b4f91e03f746efef37
+      internalID: -1812038119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_15
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 164
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa44bf7c6b4e72a4bb6c3974c386e1a7
+      internalID: 989225999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_16
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 164
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c2bd9aaf759c70408c43fb619a9762d
+      internalID: 1265716681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_17
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 164
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0473d4bc8d493841b3fa79e29611e65
+      internalID: 860372223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_18
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 132
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e1c4aa0e418e5d44a62d54f89bbba75
+      internalID: -942239022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_19
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 132
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcb54175da12cc84587fc7353318ab16
+      internalID: -611596156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_20
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 132
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29b9edf8fb6a94f458a451d4f3a4a5b6
+      internalID: 1700790779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_21
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 132
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82274921cfa5f174e943eba7a291d512
+      internalID: 1796328088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_22
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 132
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b79e621a8ffa1f4a843394be19e9726
+      internalID: 1604512958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_23
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 132
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b860a230e0849674a9b8e2ff3867584c
+      internalID: 247794344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_24
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 100
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a3d7e81e0634ab4aa7b59d0751e9ec4
+      internalID: 474650918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_25
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 100
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ef6ea35039c2884f99e650e93ad518d
+      internalID: 1659476706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_26
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 100
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fba0c2b39bdfba545890cc80a1941926
+      internalID: 1081978945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_27
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 100
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a8df550c3466eb46bf2ff5410e44261
+      internalID: -1093989269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_28
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 68
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 135a77002e636174c9c6198679bb484e
+      internalID: 744835156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_29
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 68
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccb0a548fbd7e5c4c98bbf715ced9ea2
+      internalID: -920158054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_30
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 68
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88263ee3d8556b24fbf05e88ad3d0e7d
+      internalID: -87255204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_31
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 68
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2750f2f4bfe032b478753a30e69e8ad3
+      internalID: 389118812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_32
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 36
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b3bfbc0a3667b0408bcfa56efdbc2eb
+      internalID: 1590756044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_33
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 36
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f3f9f312540e34fbc8da827aaa34a3
+      internalID: 1117056764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_34
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 36
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a32474e29acf6ad469bca51969bfc2be
+      internalID: 1195149539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_35
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 36
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 544ed6b46a322f24ca28dd7a4b4576f5
+      internalID: -937093537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_36
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 4
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e27d4d67d9c34342a3468e7b84b3e25
+      internalID: -586395042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_37
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 4
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c250b03adb9d524c9249035d5679eb8
+      internalID: -89893199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_38
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 4
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2f797636ae116d4f80b6985f01c01a1
+      internalID: 1925093437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheep_animation_with_shadow_39
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 4
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60812c0e0a3d5f74eaf785fe6ea8911c
+      internalID: 243399614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 842c38ae7997b5a4794de2c7bfd15633
     internalID: 0
     vertices: []
     indices: 
@@ -121,8 +1001,50 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
-    nameFileIdTable: {}
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Sheep_animation_with_shadow_0: 919705234
+      Sheep_animation_with_shadow_1: 191881088
+      Sheep_animation_with_shadow_10: 1566404037
+      Sheep_animation_with_shadow_11: -1627679519
+      Sheep_animation_with_shadow_12: -1342990861
+      Sheep_animation_with_shadow_13: 664800675
+      Sheep_animation_with_shadow_14: -1812038119
+      Sheep_animation_with_shadow_15: 989225999
+      Sheep_animation_with_shadow_16: 1265716681
+      Sheep_animation_with_shadow_17: 860372223
+      Sheep_animation_with_shadow_18: -942239022
+      Sheep_animation_with_shadow_19: -611596156
+      Sheep_animation_with_shadow_2: 935774171
+      Sheep_animation_with_shadow_20: 1700790779
+      Sheep_animation_with_shadow_21: 1796328088
+      Sheep_animation_with_shadow_22: 1604512958
+      Sheep_animation_with_shadow_23: 247794344
+      Sheep_animation_with_shadow_24: 474650918
+      Sheep_animation_with_shadow_25: 1659476706
+      Sheep_animation_with_shadow_26: 1081978945
+      Sheep_animation_with_shadow_27: -1093989269
+      Sheep_animation_with_shadow_28: 744835156
+      Sheep_animation_with_shadow_29: -920158054
+      Sheep_animation_with_shadow_3: 1446759404
+      Sheep_animation_with_shadow_30: -87255204
+      Sheep_animation_with_shadow_31: 389118812
+      Sheep_animation_with_shadow_32: 1590756044
+      Sheep_animation_with_shadow_33: 1117056764
+      Sheep_animation_with_shadow_34: 1195149539
+      Sheep_animation_with_shadow_35: -937093537
+      Sheep_animation_with_shadow_36: -586395042
+      Sheep_animation_with_shadow_37: -89893199
+      Sheep_animation_with_shadow_38: 1925093437
+      Sheep_animation_with_shadow_39: 243399614
+      Sheep_animation_with_shadow_4: -1781040891
+      Sheep_animation_with_shadow_5: 41844648
+      Sheep_animation_with_shadow_6: 1093564018
+      Sheep_animation_with_shadow_7: -1022944033
+      Sheep_animation_with_shadow_8: 100023964
+      Sheep_animation_with_shadow_9: -376952266
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

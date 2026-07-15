@@ -143,4 +143,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ceb96ace21330d4695c057a1e78814b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectableItem
-  itemName: Feather
+  itemData: {fileID: 11400000, guid: f7b5a3066a2353743933e25c13a3f19c, type: 2}
+  amount: 1

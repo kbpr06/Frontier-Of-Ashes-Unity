@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3451648509208182822}
   - component: {fileID: 4237065221401085615}
+  - component: {fileID: 2367270160838691206}
   m_Layer: 0
   m_Name: WineBottle_01
   m_TagString: Untagged
@@ -92,3 +93,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &2367270160838691206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609928629095989167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ceb96ace21330d4695c057a1e78814b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollectableItem
+  itemData: {fileID: 11400000, guid: 0a2eafbb464c6ff44b5499f714d56576, type: 2}
+  amount: 1

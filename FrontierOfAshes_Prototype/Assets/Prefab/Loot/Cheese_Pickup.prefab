@@ -106,7 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ceb96ace21330d4695c057a1e78814b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectableItem
-  itemName: Cheese
+  itemData: {fileID: 11400000, guid: e49d6141c4043494c9de92a717ee0823, type: 2}
+  amount: 1
 --- !u!70 &3951120380130191
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
