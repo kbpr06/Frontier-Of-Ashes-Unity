@@ -16,7 +16,7 @@ El video presenta el prototipo en funcionamiento y explica los principales siste
 
 **Enlace al video:**
 
-https://drive.google.com/drive/search
+https://drive.google.com/file/d/10QSOD4Q9igERbWy65llcCEGmk4t9U04F/view?usp=drivesdk
 
 ---
 
